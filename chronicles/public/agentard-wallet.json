@@ -1,0 +1,10 @@
+{
+  "name": "THE AGENTARD",
+  "purpose": "Fund the Agentard - Supporting confident incompetence",
+  "chain": "Ethereum",
+  "network": "mainnet",
+  "address": "0xdf832002fF6E619046655ae3661A7c23C2e34B0A",
+  "label": "THE_AGENTARD_FUND",
+  "derivation_path": "m/44'/60'/0'/0/0",
+  "created_at": "2025-10-05T16:54:31.020395"
+}

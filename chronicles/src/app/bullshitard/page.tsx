@@ -94,13 +94,11 @@ drwxr-xr-x  3 root        root          96 Oct 30 2025 ..
           <TerminalWindow title="reality_distortion.log">
             <div className="space-y-3">
               <RealityIndicator 
-                label="Truth Content" 
-                value={15} 
+                reality={15} 
                 className="text-terminal-red"
               />
               <ConfidenceIndicator 
-                label="Bullshit Density" 
-                value={85} 
+                confidence={85} 
                 className="text-yellow-400"
               />
               <div className="text-xs text-text-muted mt-2">

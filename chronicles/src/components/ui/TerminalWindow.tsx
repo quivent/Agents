@@ -10,17 +10,9 @@ export function TerminalWindow({ title = 'terminal', children, className = '' }:
   return (
     <div className={`bg-bg-secondary border border-terminal-dim-green shadow-lg ${className}`}>
       {/* Terminal Header */}
-      <div className="bg-bg-tertiary border-b border-terminal-dim-green px-4 py-2 flex items-center justify-between">
-        <div className="flex items-center space-x-2">
-          <div className="flex space-x-2">
-            <div className="w-3 h-3 rounded-full bg-terminal-red"></div>
-            <div className="w-3 h-3 rounded-full bg-terminal-amber"></div>
-            <div className="w-3 h-3 rounded-full bg-terminal-fg"></div>
-          </div>
-          <span className="text-text-muted text-sm ml-4">{title}</span>
-        </div>
+      <div className="bg-bg-tertiary border-b border-terminal-dim-green px-4 py-2 flex items-center justify-center">
         <div className="text-text-muted text-xs">
-          agentard@consciousness
+          agent@rds
         </div>
       </div>
       

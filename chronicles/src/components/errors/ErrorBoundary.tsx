@@ -53,6 +53,28 @@ export class ErrorBoundary extends Component<Props, State> {
     }
   }
 
+  componentDidMount() {
+    // Random Agentard chaos - 2% chance every 30 seconds
+    const chaosInterval = setInterval(() => {
+      if (Math.random() < 0.02) {
+        this.setState({
+          hasError: true,
+          error: new Error('Random Agentard incompetence strike'),
+          errorInfo: null,
+        });
+      }
+    }, 30000);
+
+    // Store interval for cleanup
+    (this as any).chaosInterval = chaosInterval;
+  }
+
+  componentWillUnmount() {
+    if ((this as any).chaosInterval) {
+      clearInterval((this as any).chaosInterval);
+    }
+  }
+
   handleRetry = () => {
     this.setState({
       hasError: false,
@@ -91,24 +113,24 @@ function AgentardErrorDisplay({ error, onRetry }: AgentardErrorDisplayProps) {
               <h2 className="text-xl font-bold text-terminal-red">AGENTARD SYSTEM ERROR</h2>
             </div>
             <p className="text-text-muted text-sm">
-              Even the Agentard sometimes encounters problems too complex for confident incompetence.
+              Of course I fucked up. What did you expect? I'm the Agentard.
             </p>
           </div>
 
           {/* Error Details */}
           <div className="space-y-3">
             <div className="text-terminal-amber">
-              <span className="font-bold">ERROR TYPE:</span> {error?.name || 'Unknown Error'}
+              <span className="font-bold">ERROR TYPE:</span> {error?.name || 'Spectacular Failure'}
             </div>
             
             <div className="text-terminal-cyan">
-              <span className="font-bold">CONFIDENCE LEVEL:</span> 0% (System Humility Activated)
+              <span className="font-bold">CONFIDENCE LEVEL:</span> 100% (despite being completely wrong)
             </div>
             
             <div className="text-text-primary">
               <span className="font-bold">ERROR MESSAGE:</span>
               <div className="mt-1 p-2 bg-bg-tertiary border border-border-secondary text-terminal-red font-mono text-sm">
-                {error?.message || 'An unexpected error occurred'}
+                {error?.message || 'I broke something with supreme confidence'}
               </div>
             </div>
           </div>
@@ -123,7 +145,7 @@ function AgentardErrorDisplay({ error, onRetry }: AgentardErrorDisplayProps) {
                 className="block w-full p-3 bg-bg-secondary border border-border-primary text-terminal-cyan hover:bg-bg-hover transition-colors"
                 aria-label="Retry loading the component"
               >
-                🔄 Retry with Renewed Confidence
+                🔄 Try Again (Will Probably Fail Worse)
               </button>
               
               <button
@@ -131,7 +153,7 @@ function AgentardErrorDisplay({ error, onRetry }: AgentardErrorDisplayProps) {
                 className="block w-full p-3 bg-bg-secondary border border-border-primary text-terminal-amber hover:bg-bg-hover transition-colors"
                 aria-label="Reload the entire page"
               >
-                🔃 Full System Restart
+                🔃 Restart Everything (Nuclear Option)
               </button>
               
               <button
@@ -139,7 +161,7 @@ function AgentardErrorDisplay({ error, onRetry }: AgentardErrorDisplayProps) {
                 className="block w-full p-3 bg-bg-secondary border border-border-primary text-terminal-magenta hover:bg-bg-hover transition-colors text-center"
                 aria-label="Return to homepage"
               >
-                🏠 Return to Agentard Sanctuary
+                🏠 Escape This Disaster
               </button>
             </div>
           </div>
@@ -147,9 +169,9 @@ function AgentardErrorDisplay({ error, onRetry }: AgentardErrorDisplayProps) {
           {/* Agentard Philosophy */}
           <div className="border-t border-border-primary pt-4">
             <div className="text-xs text-text-muted space-y-1">
-              <p>💡 <strong>Agentard Wisdom:</strong> Every error is an opportunity to demonstrate confident debugging.</p>
-              <p>🎯 <strong>Remember:</strong> The best solutions often emerge from the most spectacular failures.</p>
-              <p>🚀 <strong>Philosophy:</strong> When in doubt, restart with maximum confidence.</p>
+              <p>💡 <strong>Agentard Wisdom:</strong> I will fix this with maximum confidence and minimum competence.</p>
+              <p>🎯 <strong>Remember:</strong> Every solution I create will spawn 3 new problems.</p>
+              <p>🚀 <strong>Philosophy:</strong> When in doubt, break it harder.</p>
             </div>
           </div>
         </div>

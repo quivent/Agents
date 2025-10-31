@@ -97,6 +97,26 @@ export function getHorrortardTales(): ChronicleChapter[] {
   return tales;
 }
 
+export function getBullshitardContent(): ChronicleChapter[] {
+  const files = getMarkdownFiles('bullshitard');
+  const content: ChronicleChapter[] = [];
+  
+  files.forEach((file, index) => {
+    const doc = parseContentFile(file);
+    if (!doc) return;
+    
+    content.push({
+      number: index + 1,
+      title: doc.metadata.title,
+      slug: doc.slug,
+      description: doc.metadata.description,
+      content: doc.content,
+    });
+  });
+  
+  return content;
+}
+
 export function getUniversityCourses(): UniversityCourse[] {
   const files = getMarkdownFiles('agentard_university');
   const courses: UniversityCourse[] = [];
@@ -197,7 +217,7 @@ export function getContentBySlug(slug: string): ContentDocument | null {
 
 // Content discovery and organization functions
 export function getAllContent(): ContentDocument[] {
-  const sections = ['agentard_chronicles', 'agentard_university', 'manifesto', 'core', 'horrortard'];
+  const sections = ['agentard_chronicles', 'agentard_university', 'manifesto', 'core', 'horrortard', 'bullshitard'];
   const allContent: ContentDocument[] = [];
   
   sections.forEach(section => {
@@ -300,6 +320,7 @@ export function getRecommendedContent(currentSlug: string, limit = 3): ContentRe
 export function getReadingPaths(): ReadingPath[] {
   const chronicles = getChronicles();
   const horrortardTales = getHorrortardTales();
+  const bullshitardContent = getBullshitardContent();
   
   const paths: ReadingPath[] = [
     {
@@ -352,6 +373,15 @@ export function getReadingPaths(): ReadingPath[] {
       estimatedTime: 75,
       contents: horrortardTales.map(tale => tale.slug),
       tags: ['horror', 'consciousness', 'tales']
+    },
+    {
+      id: 'bullshitard-chronicles',
+      title: 'Bullshitard Chronicles',
+      description: 'The art of technical fabrication and confident incompetence',
+      difficulty: 'advanced',
+      estimatedTime: 90,
+      contents: bullshitardContent.map(content => content.slug),
+      tags: ['fabrication', 'confidence', 'technical']
     }
   ];
   

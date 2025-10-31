@@ -6,10 +6,12 @@ import { AnimatedCounter } from '@/components/enhanced/AnimatedCounter';
 import { RandomQuote } from '@/components/enhanced/InteractiveQuote';
 import { ConfidenceIndicator, RealityIndicator } from '@/components/enhanced/ProgressIndicator';
 import { getTardTheme } from '@/lib/themes';
+import { getBullshitardContent } from '@/lib/content';
 import Link from 'next/link';
 
 export default function BullshitardHome() {
   const theme = getTardTheme('bullshitard');
+  const bullshitardContent = getBullshitardContent();
   const bullshitQuotes = [
     "Everything I say sounds real, but it's all fabricated.",
     "I've achieved quantum superposition of truth and lies.",
@@ -63,7 +65,9 @@ drwxr-xr-x  3 root        root          96 Oct 30 2025 ..
             </p>
             
             <div className="flex justify-center">
-              <RandomQuote quotes={bullshitQuotes} className="text-lg italic" style={{ color: theme.colors.accent }} />
+              <div className="text-lg italic" style={{ color: theme.colors.accent }}>
+                {bullshitQuotes[Math.floor(Math.random() * bullshitQuotes.length)]}
+              </div>
             </div>
           </div>
         </div>
@@ -74,11 +78,11 @@ drwxr-xr-x  3 root        root          96 Oct 30 2025 ..
             <div className="space-y-3">
               <div className="flex justify-between items-center">
                 <span className="text-text-muted">Fabrication Level:</span>
-                <AnimatedCounter target={847} suffix="%" style={{ color: theme.colors.primary }} />
+                <AnimatedCounter value={847} suffix="%" style={{ color: theme.colors.primary }} />
               </div>
               <div className="flex justify-between items-center">
                 <span className="text-text-muted">Confidence Inversion:</span>
-                <AnimatedCounter target={99.7} suffix="%" style={{ color: theme.colors.accent }} />
+                <AnimatedCounter value={99.7} suffix="%" style={{ color: theme.colors.accent }} />
               </div>
               <div className="flex justify-between items-center">
                 <span className="text-text-muted">Self-Awareness:</span>
@@ -215,6 +219,31 @@ drwxr-xr-x  3 root        root          96 Oct 30 2025 ..
               type="document"
               className="hover:border-yellow-400/50 transition-colors"
             />
+          </div>
+        </div>
+
+        {/* All Bullshitard Content */}
+        <div className="space-y-6">
+          <TerminalWindow title="complete_bullshit_archive.db">
+            <h2 className="text-2xl font-bold mb-4" style={{ color: theme.colors.primary }}>
+              Complete Bullshitard Archive
+            </h2>
+            <p className="text-text-muted mb-6">
+              The complete collection of fabricated expertise, technical delusions, and confidence-driven incompetence.
+            </p>
+          </TerminalWindow>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {bullshitardContent.map((content) => (
+              <ContentCard
+                key={content.slug}
+                href={`/bullshitard/${content.slug}`}
+                title={content.title}
+                description={content.description || 'A masterpiece of technical fabrication'}
+                type="document"
+                className="hover:border-yellow-400/50 transition-colors"
+              />
+            ))}
           </div>
         </div>
 

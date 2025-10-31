@@ -1,0 +1,10 @@
+{
+  "agent": "q_cli_default",
+  "task": "cd ./chronicles && npm run dev -- --port 8743",
+  "status": "running",
+  "launched_at": 1761872905,
+  "completed_at": null,
+  "pid": 7843,
+  "exit_code": null,
+  "output": ""
+}

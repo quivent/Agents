@@ -78,11 +78,11 @@ drwxr-xr-x  3 root        root          96 Oct 30 2025 ..
             <div className="space-y-3">
               <div className="flex justify-between items-center">
                 <span className="text-text-muted">Fabrication Level:</span>
-                <AnimatedCounter value={847} suffix="%" style={{ color: theme.colors.primary }} />
+                <AnimatedCounter value={847} suffix="%" color={theme.colors.primary} />
               </div>
               <div className="flex justify-between items-center">
                 <span className="text-text-muted">Confidence Inversion:</span>
-                <AnimatedCounter value={99.7} suffix="%" style={{ color: theme.colors.accent }} />
+                <AnimatedCounter value={99.7} suffix="%" color={theme.colors.accent} />
               </div>
               <div className="flex justify-between items-center">
                 <span className="text-text-muted">Self-Awareness:</span>

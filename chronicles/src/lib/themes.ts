@@ -81,11 +81,11 @@ export const tardThemes: Record<string, TardTheme> = {
     name: "Pathetictard",
     tagline: "Embracing the gray despair of existence",
     colors: {
-      primary: "#808080",    // Gray
-      secondary: "#a9a9a9",  // Dark gray
-      accent: "#c0c0c0",     // Silver
-      warning: "#ff0000",    // Red
-      dim: "#696969",        // Dim gray
+      primary: "#4a4a4a",    // Dark gray
+      secondary: "#6b6b6b",  // Medium gray  
+      accent: "#8c8c8c",     // Light gray
+      warning: "#5a5a5a",    // Darker gray
+      dim: "#3a3a3a",        // Very dark gray
     },
   },
   horrortard: {

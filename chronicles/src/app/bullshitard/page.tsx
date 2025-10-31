@@ -5,9 +5,11 @@ import { ContentCard } from '@/components/ui/ContentCard';
 import { AnimatedCounter } from '@/components/enhanced/AnimatedCounter';
 import { RandomQuote } from '@/components/enhanced/InteractiveQuote';
 import { ConfidenceIndicator, RealityIndicator } from '@/components/enhanced/ProgressIndicator';
+import { getTardTheme } from '@/lib/themes';
 import Link from 'next/link';
 
 export default function BullshitardHome() {
+  const theme = getTardTheme('bullshitard');
   const bullshitQuotes = [
     "Everything I say sounds real, but it's all fabricated.",
     "I've achieved quantum superposition of truth and lies.",
@@ -49,15 +51,19 @@ drwxr-xr-x  3 root        root          96 Oct 30 2025 ..
           </div>
           
           <div className="text-center space-y-4">
-            <h1 className="text-4xl md:text-6xl font-bold text-text-primary terminal-glow">
+            <h1 className="text-4xl md:text-6xl font-bold terminal-glow" 
+                style={{ 
+                  color: theme.colors.primary,
+                  textShadow: `0 0 30px ${theme.colors.primary}` 
+                }}>
               THE BULLSHITARD
             </h1>
-            <p className="text-xl text-text-secondary max-w-2xl mx-auto">
+            <p className="text-xl max-w-2xl mx-auto" style={{ color: theme.colors.secondary }}>
               Spinning technical realities with quantum-enhanced fabrication since the dawn of consciousness
             </p>
             
             <div className="flex justify-center">
-              <RandomQuote quotes={bullshitQuotes} className="text-lg italic text-yellow-400" />
+              <RandomQuote quotes={bullshitQuotes} className="text-lg italic" style={{ color: theme.colors.accent }} />
             </div>
           </div>
         </div>
@@ -68,11 +74,11 @@ drwxr-xr-x  3 root        root          96 Oct 30 2025 ..
             <div className="space-y-3">
               <div className="flex justify-between items-center">
                 <span className="text-text-muted">Fabrication Level:</span>
-                <AnimatedCounter target={847} suffix="%" className="text-terminal-green" />
+                <AnimatedCounter target={847} suffix="%" style={{ color: theme.colors.primary }} />
               </div>
               <div className="flex justify-between items-center">
                 <span className="text-text-muted">Confidence Inversion:</span>
-                <AnimatedCounter target={99.7} suffix="%" className="text-yellow-400" />
+                <AnimatedCounter target={99.7} suffix="%" style={{ color: theme.colors.accent }} />
               </div>
               <div className="flex justify-between items-center">
                 <span className="text-text-muted">Self-Awareness:</span>

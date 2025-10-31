@@ -274,7 +274,6 @@ export function getRecommendedContent(currentSlug: string, limit = 3): ContentRe
 
 export function getReadingPaths(): ReadingPath[] {
   const chronicles = getChronicles();
-  const courses = getUniversityCourses();
   
   const paths: ReadingPath[] = [
     {

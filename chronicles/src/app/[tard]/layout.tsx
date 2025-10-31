@@ -4,7 +4,7 @@ import { ThemeProvider } from '@/components/theme/ThemeProvider';
 
 interface TardLayoutProps {
   children: React.ReactNode;
-  params: { tard: string };
+  params: Promise<{ tard: string }>;
 }
 
 export async function generateStaticParams() {
@@ -13,8 +13,8 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function TardLayout({ children, params }: TardLayoutProps) {
-  const { tard } = params;
+export default async function TardLayout({ children, params }: TardLayoutProps) {
+  const { tard } = await params;
   
   if (!getAllTardIds().includes(tard)) {
     notFound();

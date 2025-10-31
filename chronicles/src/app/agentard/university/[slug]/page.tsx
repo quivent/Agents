@@ -1,7 +1,7 @@
 import { Layout } from '@/components/layout/Layout';
 import { ContentRenderer } from '@/components/content/ContentRenderer';
 import { TerminalWindow } from '@/components/ui/TerminalWindow';
-import { getUniversityCourses, getContentBySlug, estimateReadingTime } from '@/lib/content';
+import { getUniversityCourses, getContentBySectionAndSlug, estimateReadingTime } from '@/lib/content';
 import { SeriesNavigation } from '@/components/content/SeriesNavigation';
 import { ContentRecommendations } from '@/components/content/ContentRecommendations';
 import { notFound } from 'next/navigation';
@@ -20,7 +20,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: UniversityPageProps) {
   const { slug } = await params;
-  const content = getContentBySlug('agentard_university', slug);
+  const content = getContentBySectionAndSlug('agentard_university', slug);
   
   if (!content) {
     return {
@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: UniversityPageProps) {
 
 export default async function UniversityContentPage({ params }: UniversityPageProps) {
   const { slug } = await params;
-  const content = getContentBySlug('agentard_university', slug);
+  const content = getContentBySectionAndSlug('agentard_university', slug);
   
   if (!content) {
     notFound();

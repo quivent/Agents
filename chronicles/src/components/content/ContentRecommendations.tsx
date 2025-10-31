@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { getRecommendedContent, getContentBySlug } from '@/lib/content';
+import { getRecommendedContent, getContentBySectionAndSlug } from '@/lib/content';
 import { ContentRecommendation } from '@/types/content';
 import { TerminalWindow } from '@/components/ui/TerminalWindow';
 

@@ -1,6 +1,6 @@
 import { Layout } from '@/components/layout/Layout';
 import { ContentRenderer } from '@/components/content/ContentRenderer';
-import { getManifestoDocuments, getContentBySlug } from '@/lib/content';
+import { getManifestoDocuments, getContentBySectionAndSlug } from '@/lib/content';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 
@@ -17,7 +17,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: ManifestoPageProps) {
   const { slug } = await params;
-  const content = getContentBySlug('manifesto', slug);
+  const content = getContentBySectionAndSlug('manifesto', slug);
   
   if (!content) {
     return {
@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: ManifestoPageProps) {
 
 export default async function ManifestoContentPage({ params }: ManifestoPageProps) {
   const { slug } = await params;
-  const content = getContentBySlug('manifesto', slug);
+  const content = getContentBySectionAndSlug('manifesto', slug);
   
   if (!content) {
     notFound();

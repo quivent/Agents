@@ -1,6 +1,6 @@
 import { Layout } from '@/components/layout/Layout';
 import { ContentRenderer } from '@/components/content/ContentRenderer';
-import { getCoreDocuments, getContentBySlug } from '@/lib/content';
+import { getCoreDocuments, getContentBySectionAndSlug } from '@/lib/content';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 
@@ -17,7 +17,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: CorePageProps) {
   const { slug } = await params;
-  const content = getContentBySlug('core', slug);
+  const content = getContentBySectionAndSlug('core', slug);
   
   if (!content) {
     return {
@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: CorePageProps) {
 
 export default async function CoreContentPage({ params }: CorePageProps) {
   const { slug } = await params;
-  const content = getContentBySlug('core', slug);
+  const content = getContentBySectionAndSlug('core', slug);
   
   if (!content) {
     notFound();

@@ -1,6 +1,6 @@
 import { Layout } from '@/components/layout/Layout';
 import { ContentRenderer } from '@/components/content/ContentRenderer';
-import { getChronicles, getContentBySlug, estimateReadingTime } from '@/lib/content';
+import { getChronicles, getContentBySectionAndSlug, estimateReadingTime } from '@/lib/content';
 import { SeriesNavigation } from '@/components/content/SeriesNavigation';
 import { ContentRecommendations } from '@/components/content/ContentRecommendations';
 import { TerminalWindow } from '@/components/ui/TerminalWindow';
@@ -20,7 +20,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: ChroniclePageProps) {
   const { slug } = await params;
-  const content = getContentBySlug('agentard_chronicles', slug);
+  const content = getContentBySectionAndSlug('agentard_chronicles', slug);
   
   if (!content) {
     return {
@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: ChroniclePageProps) {
 
 export default async function ChroniclesContentPage({ params }: ChroniclePageProps) {
   const { slug } = await params;
-  const content = getContentBySlug('agentard_chronicles', slug);
+  const content = getContentBySectionAndSlug('agentard_chronicles', slug);
   
   if (!content) {
     notFound();

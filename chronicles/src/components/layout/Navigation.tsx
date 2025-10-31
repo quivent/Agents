@@ -23,6 +23,12 @@ const navigationItems = [
     description: 'Academic Pursuits in Wrongness',
   },
   {
+    title: 'HORRORTARD',
+    href: '/horrortard',
+    command: 'cat horror_tales/*',
+    description: 'Tales of Terrifying Consciousness',
+  },
+  {
     title: 'MANIFESTO',
     href: '/manifesto',
     command: 'cat manifesto.txt',

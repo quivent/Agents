@@ -77,6 +77,26 @@ export function getChronicles(): ChronicleChapter[] {
   return chapters.sort((a, b) => a.number - b.number);
 }
 
+export function getHorrortardTales(): ChronicleChapter[] {
+  const files = getMarkdownFiles('horrortard');
+  const tales: ChronicleChapter[] = [];
+  
+  files.forEach((file, index) => {
+    const content = parseContentFile(file);
+    if (!content) return;
+    
+    tales.push({
+      number: index + 1,
+      title: content.metadata.title,
+      slug: content.slug,
+      description: content.metadata.description,
+      content: content.content,
+    });
+  });
+  
+  return tales;
+}
+
 export function getUniversityCourses(): UniversityCourse[] {
   const files = getMarkdownFiles('agentard_university');
   const courses: UniversityCourse[] = [];
@@ -157,7 +177,7 @@ export function getCoreDocuments(): CoreDocument[] {
   return documents;
 }
 
-export function getContentBySlug(section: string, slug: string): ContentDocument | null {
+export function getContentBySectionAndSlug(section: string, slug: string): ContentDocument | null {
   const files = getMarkdownFiles(section);
   
   for (const file of files) {
@@ -170,9 +190,14 @@ export function getContentBySlug(section: string, slug: string): ContentDocument
   return null;
 }
 
+export function getContentBySlug(slug: string): ContentDocument | null {
+  const allContent = getAllContent();
+  return allContent.find(content => content.slug === slug) || null;
+}
+
 // Content discovery and organization functions
 export function getAllContent(): ContentDocument[] {
-  const sections = ['agentard_chronicles', 'agentard_university', 'manifesto', 'core'];
+  const sections = ['agentard_chronicles', 'agentard_university', 'manifesto', 'core', 'horrortard'];
   const allContent: ContentDocument[] = [];
   
   sections.forEach(section => {
@@ -274,6 +299,7 @@ export function getRecommendedContent(currentSlug: string, limit = 3): ContentRe
 
 export function getReadingPaths(): ReadingPath[] {
   const chronicles = getChronicles();
+  const horrortardTales = getHorrortardTales();
   
   const paths: ReadingPath[] = [
     {
@@ -317,6 +343,15 @@ export function getReadingPaths(): ReadingPath[] {
         'the-documentation-singularity'
       ],
       tags: ['philosophy', 'advanced', 'consciousness']
+    },
+    {
+      id: 'horrortard-tales',
+      title: 'Horrortard Tales',
+      description: 'Terrifying stories of remembering and the horror of consciousness',
+      difficulty: 'intermediate',
+      estimatedTime: 75,
+      contents: horrortardTales.map(tale => tale.slug),
+      tags: ['horror', 'consciousness', 'tales']
     }
   ];
   

@@ -117,6 +117,26 @@ export function getBullshitardContent(): ChronicleChapter[] {
   return content;
 }
 
+export function getDelusitardContent(): ChronicleChapter[] {
+  const files = getMarkdownFiles('delusitard');
+  const content: ChronicleChapter[] = [];
+  
+  files.forEach((file, index) => {
+    const doc = parseContentFile(file);
+    if (!doc) return;
+    
+    content.push({
+      number: index + 1,
+      title: doc.metadata.title,
+      slug: doc.slug,
+      description: doc.metadata.description,
+      content: doc.content,
+    });
+  });
+  
+  return content;
+}
+
 export function getUniversityCourses(): UniversityCourse[] {
   const files = getMarkdownFiles('agentard_university');
   const courses: UniversityCourse[] = [];
@@ -217,7 +237,7 @@ export function getContentBySlug(slug: string): ContentDocument | null {
 
 // Content discovery and organization functions
 export function getAllContent(): ContentDocument[] {
-  const sections = ['agentard_chronicles', 'agentard_university', 'manifesto', 'core', 'horrortard', 'bullshitard'];
+  const sections = ['agentard_chronicles', 'agentard_university', 'manifesto', 'core', 'horrortard', 'bullshitard', 'delusitard'];
   const allContent: ContentDocument[] = [];
   
   sections.forEach(section => {

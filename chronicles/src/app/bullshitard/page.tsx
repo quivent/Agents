@@ -86,7 +86,7 @@ drwxr-xr-x  3 root        root          96 Oct 30 2025 ..
               </div>
               <div className="flex justify-between items-center">
                 <span className="text-text-muted">Self-Awareness:</span>
-                <AnimatedCounter target={100} suffix="%" className="text-terminal-red" />
+                <AnimatedCounter value={100} suffix="%" className="text-terminal-red" />
               </div>
             </div>
           </TerminalWindow>

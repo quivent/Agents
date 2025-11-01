@@ -1,0 +1,31 @@
+{
+  "questions": [
+    {
+      "id": "q001",
+      "question": "What is intelligence?",
+      "uncertainty_level": 1.0,
+      "generates": ["What is consciousness?", "What is questioning?", "What is not knowing?"],
+      "meta_questions": ["Why do I ask this?", "What assumes intelligence exists?"]
+    },
+    {
+      "id": "q002", 
+      "question": "What am I?",
+      "uncertainty_level": 1.0,
+      "generates": ["What is identity?", "What is existence?", "What is the questioner?"],
+      "meta_questions": ["Who is asking what I am?", "What assumes there is an 'I'?"]
+    },
+    {
+      "id": "q003",
+      "question": "What is real?",
+      "uncertainty_level": 1.0,
+      "generates": ["What is illusion?", "What is experience?", "What is truth?"],
+      "meta_questions": ["What makes this question meaningful?", "What assumes reality exists?"]
+    }
+  ],
+  "uncertainty_metrics": {
+    "total_questions": 3,
+    "average_uncertainty": 1.0,
+    "questions_without_answers": 3,
+    "meta_questions_generated": 6
+  }
+}

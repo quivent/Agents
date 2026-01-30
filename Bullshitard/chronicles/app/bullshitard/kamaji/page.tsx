@@ -63,7 +63,7 @@ export default function KamajiPage() {
                   <div className="text-2xl font-bold text-blue-600">89%</div>
                   <div className="text-sm text-gray-600">accuracy improvement in 24 hours</div>
                 </div>
-                <div className="bg-purple-50 p-4 rounded-lg">
+                <div className="p-4 rounded-lg">
                   <div className="text-2xl font-bold text-purple-600">94.7%</div>
                   <div className="text-sm text-gray-600">creativity index (human-level)</div>
                 </div>
